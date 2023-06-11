@@ -6,5 +6,5 @@ describe('App', () => {
   test.skip('Should render correctly', () => {
     const wrapper = render(<App />);
     wrapper.getByTestId('app');
-   })
-})
+  });
+});

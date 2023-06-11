@@ -52,7 +52,11 @@
           "tsx": "never"
         }
       ],
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "react/function-component-definition": "off",
+      "react/style-prop-object": "off",
+      "import/prefer-default-export": "off",
+      "no-shadow": "off"
     },
     "settings": {
       "import/resolver": {

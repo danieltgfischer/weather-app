@@ -4,7 +4,7 @@ import { render } from '@testing-library/react-native';
 
 describe('WheatherCurrent', () => {
   test('Should render correctly', () => {
-      const wrapper = render(<WeatherCurrent />);
-      wrapper.getByTestId('weather-current');
-   });
- });
+    const wrapper = render(<WeatherCurrent />);
+    wrapper.getByTestId('weather-current');
+  });
+});

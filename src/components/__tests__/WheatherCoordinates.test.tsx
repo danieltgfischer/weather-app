@@ -4,7 +4,7 @@ import { render } from '@testing-library/react-native';
 
 describe('WheatherCoordinates', () => {
   test('Should render correctly', () => {
-      const wrapper = render(<WeatherCoordinates />);
-      wrapper.getByTestId('weather-coordinates');
-   });
- });
+    const wrapper = render(<WeatherCoordinates />);
+    wrapper.getByTestId('weather-coordinates');
+  });
+});

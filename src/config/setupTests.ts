@@ -11,5 +11,3 @@ jest.mock('react-native-reanimated', () => {
 
   return Reanimated;
 });
-
-

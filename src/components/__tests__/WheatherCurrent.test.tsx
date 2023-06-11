@@ -7,4 +7,6 @@ describe('WheatherCurrent', () => {
     const wrapper = render(<WeatherCurrent />);
     wrapper.getByTestId('weather-current');
   });
+
+  test.todo('Should navigate to Weather screen with location');
 });

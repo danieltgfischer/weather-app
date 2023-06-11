@@ -1,6 +1,9 @@
 import React from 'react';
 import Home from '@/screens/home';
 import { render } from '@testing-library/react-native';
+import WeatherCurrent from '@/components/WeatherCurrent';
+import { View } from 'react-native';
+import WheatherCoordinates from '@/components/WeatherCoordinates';
 
 jest.mock('@/components/WeatherCoordinates.tsx', () =>
   jest.fn().mockReturnValue(null),
@@ -34,5 +37,26 @@ describe('Home', () => {
       const wrapper = render(<Home />);
       wrapper.getByText('Saturday');
     });
+  });
+
+  test('Should contain a section to get current weather', () => {
+    (WeatherCurrent as jest.Mock).mockReturnValue(
+      <View testID="mock-current" />,
+    );
+    const wrapper = render(<Home />);
+    wrapper.getByTestId('mock-current');
+  });
+
+  test('Should contain a section to get coordinates weather', () => {
+    (WheatherCoordinates as jest.Mock).mockReturnValue(
+      <View testID="mock-coordinates" />,
+    );
+    const wrapper = render(<Home />);
+    wrapper.getByTestId('mock-coordinates');
+  });
+
+  test('Should contain a divider between the current and coordinate components', () => {
+    const wrapper = render(<Home />);
+    wrapper.getByTestId('home-screen-divider');
   });
 });

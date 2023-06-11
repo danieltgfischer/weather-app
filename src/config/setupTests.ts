@@ -13,5 +13,3 @@ jest.mock('react-native-reanimated', () => {
 });
 
 
-global.window = {};
-

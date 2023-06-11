@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import Home from './home';
+import AppNavigator from '@/routes/app.routes';
 
 export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <Home />
+      <AppNavigator />
     </>
   );
 }

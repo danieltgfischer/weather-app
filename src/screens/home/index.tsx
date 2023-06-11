@@ -2,8 +2,9 @@ import React from 'react';
 import { Text } from 'react-native';
 import format from 'date-fns/format';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Colors } from '@/styles/constants';
 import WheatherCoordinates from '@/components/WeatherCoordinates';
+import WheatherCurrent from '@/components/WeatherCurrent';
+import { Colors } from '@/styles/constants';
 
 const Home: React.FC = () => {
   const date = new Date();
@@ -18,6 +19,10 @@ const Home: React.FC = () => {
       </Text>
       <Text className="text-white w-full text-left pl-8 text-lg">
         {format(date, 'EEEE')}
+      </Text>
+      <WheatherCurrent />
+      <Text className="text-white" testID="home-screen-divider">
+        Or
       </Text>
       <WheatherCoordinates />
     </LinearGradient>

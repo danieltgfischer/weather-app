@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '@/screens/home';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationProp } from '@react-navigation/native';
 import Weather from '@/screens/weather';
 import { Routes } from './routes';
 
@@ -12,6 +12,8 @@ export type RootStackParamList = {
     longitude: number;
   };
 };
+
+export type useNavigationType = NavigationProp<RootStackParamList>;
 
 const StackNavigator = createStackNavigator<RootStackParamList>();
 

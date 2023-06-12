@@ -56,7 +56,8 @@
       "react/function-component-definition": "off",
       "react/style-prop-object": "off",
       "import/prefer-default-export": "off",
-      "no-shadow": "off"
+      "no-shadow": "off",
+      "react/jsx-props-no-spreading": "off"
     },
     "settings": {
       "import/resolver": {

@@ -1,12 +1,13 @@
-import { Colors } from '@/styles/constants';
-import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import {
   ActivityIndicator,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
+  useWindowDimensions,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Colors } from '@/styles/constants';
 
 type Props = {
   label: string;
@@ -25,11 +26,14 @@ const Button: React.FC<Props> = ({
   return (
     <TouchableOpacity
       {...props}
-      className={`border-r-8 px-4 py-2 justify-center items-center ${className}`}
       onPress={onPress}
       testID={props.testID ?? 'button'}
+      className="w-11/12"
     >
-      <LinearGradient colors={[Colors.LIGHTER_GRAY, Colors.DARK_GRAY]}>
+      <LinearGradient
+        className={`rounded-lg  w-full self-center px-4 py-2 justify-center items-center ${className}`}
+        colors={[Colors.LIGHTER_GRAY, Colors.DARK_GRAY]}
+      >
         {loading ? (
           <ActivityIndicator
             size="small"

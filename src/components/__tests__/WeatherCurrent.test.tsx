@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherCurrent from '@/components/WeatherCurrent';
 import {
+  cleanup,
   fireEvent,
   render,
   waitFor,
@@ -18,6 +19,9 @@ jest.mock('@react-navigation/native', () => ({
 }));
 
 describe('WheatherCurrent', () => {
+  beforeEach(() => {
+    cleanup();
+  });
   test('Should render correctly', () => {
     const wrapper = render(<WeatherCurrent />);
     wrapper.getByTestId('weather-button');
@@ -95,6 +99,12 @@ describe('WheatherCurrent', () => {
   });
 
   describe('Error', () => {
+    const errorStyle = {
+      borderBottomColor: Colors.ERROR,
+      borderLeftColor: Colors.ERROR,
+      borderRightColor: Colors.ERROR,
+      borderTopColor: Colors.ERROR,
+    };
     test('Should be displayed after fetching position has failed', async () => {
       jest
         .spyOn(LocationService, 'getCurrentPosition')
@@ -103,12 +113,20 @@ describe('WheatherCurrent', () => {
       const button = wrapper.getByTestId('weather-button');
       fireEvent.press(button);
       await waitFor(() => {
-        expect(button).toHaveStyle({
-          borderBottomColor: Colors.ERROR,
-          borderLeftColor: Colors.ERROR,
-          borderRightColor: Colors.ERROR,
-          borderTopColor: Colors.ERROR,
-        });
+        expect(button).toHaveStyle(errorStyle);
+      });
+    });
+
+    test('Should be reset after fetching position again', async () => {
+      jest
+        .spyOn(LocationService, 'getCurrentPosition')
+        .mockRejectedValueOnce(new Error(''));
+      const wrapper = render(<WeatherCurrent />);
+      const button = wrapper.getByTestId('weather-button');
+      fireEvent.press(button);
+      await waitFor(() => {
+        fireEvent.press(button);
+        expect(button).not.toHaveStyle(errorStyle);
       });
     });
   });

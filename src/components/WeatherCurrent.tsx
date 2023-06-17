@@ -12,6 +12,7 @@ const WheatherCurrent: React.FC = () => {
 
   const handleFetchWeather = useCallback(async () => {
     try {
+      setError(false);
       setLoading(true);
       const position = await LocationService.getCurrentPosition();
       navigation.navigate(Routes.WEATHER, position);
@@ -28,7 +29,7 @@ const WheatherCurrent: React.FC = () => {
       onPress={handleFetchWeather}
       testID="weather-button"
       loading={loading}
-      textStyle={error ? 'border border-red-600 border-1 rounded-lg' : ''}
+      textStyle={error ? 'border border-red-600 border-2 rounded-lg' : ''}
     />
   );
 };

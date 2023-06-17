@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
-  useWindowDimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '@/styles/constants';
@@ -13,11 +12,11 @@ type Props = {
   label: string;
   onPress: () => void;
   loading?: boolean;
-  className?: string;
+  textStyle?: string;
 } & TouchableOpacityProps;
 
 const Button: React.FC<Props> = ({
-  className,
+  textStyle,
   loading,
   label,
   onPress,
@@ -28,16 +27,16 @@ const Button: React.FC<Props> = ({
       {...props}
       onPress={onPress}
       testID={props.testID ?? 'button'}
-      className="w-11/12"
+      className={`w-11/12 my-4 ${textStyle}`}
     >
       <LinearGradient
-        className={`rounded-lg  w-full self-center px-4 py-2 justify-center items-center ${className}`}
+        className="rounded-lg w-full self-center  justify-center h-10 items-center"
         colors={[Colors.LIGHTER_GRAY, Colors.DARK_GRAY]}
       >
         {loading ? (
           <ActivityIndicator
             size="small"
-            color={Colors.GRAY}
+            color={Colors.WHITE}
             testID="button-loading"
           />
         ) : (
@@ -50,7 +49,7 @@ const Button: React.FC<Props> = ({
 
 Button.defaultProps = {
   loading: undefined,
-  className: '',
+  textStyle: '',
 };
 
 export default Button;
